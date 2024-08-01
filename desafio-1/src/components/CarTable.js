@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { fetchCars } from '../api';
 import './CarTable.css';
 
 // Función para generar datos ficticios
@@ -31,7 +30,6 @@ const CarTable = () => {
 
   useEffect(() => {
     const getCars = async () => {
-      // const carData = await fetchCars('camry');
       const carData = generateDummyCars();
       setCars(carData);
       setLoading(false);
@@ -43,10 +41,19 @@ const CarTable = () => {
     let sortableCars = [...cars];
     if (sortConfig.key !== '') {
       sortableCars.sort((a, b) => {
-        if (a[sortConfig.key] < b[sortConfig.key]) {
+        let aValue = a[sortConfig.key];
+        let bValue = b[sortConfig.key];
+
+        // Convertir a números si el campo es 'model'
+        if (sortConfig.key === 'model') {
+          aValue = parseInt(aValue.replace(/\D/g, ''));
+          bValue = parseInt(bValue.replace(/\D/g, ''));
+        }
+
+        if (aValue < bValue) {
           return sortConfig.direction === 'ascending' ? -1 : 1;
         }
-        if (a[sortConfig.key] > b[sortConfig.key]) {
+        if (aValue > bValue) {
           return sortConfig.direction === 'ascending' ? 1 : -1;
         }
         return 0;
