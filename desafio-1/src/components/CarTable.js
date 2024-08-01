@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { fetchCars } from '../api';
 import './CarTable.css';
 
-// Función para generar datos ficticios
 const generateDummyCars = () => {
   const dummyCars = [];
   for (let i = 0; i < 100; i++) {
@@ -31,7 +30,7 @@ const CarTable = () => {
 
   useEffect(() => {
     const getCars = async () => {
-      // const carData = await fetchCars('camry');
+
       const carData = generateDummyCars();
       setCars(carData);
       setLoading(false);
