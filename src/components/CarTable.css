@@ -1,0 +1,68 @@
+.car-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+  }
+  
+  .car-table th, .car-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .car-table th {
+    background-color: #002d62;
+    color: #ffffff; 
+    cursor: pointer;
+    position: relative;
+  }
+  
+  .car-table th:after {
+    content: ' ';
+    display: block;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 5px solid transparent;
+    border-top-color: #ffffff;
+  }
+  
+  .car-table th.ascending:after {
+    border-bottom-color: #ffffff;
+    border-top-color: transparent;
+  }
+  
+  .car-table th.descending:after {
+    border-bottom-color: transparent;
+  }
+  
+  .car-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .pagination button {
+    background-color: #002d62;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin: 0 5px;
+    cursor: pointer;
+  }
+  
+  .pagination button:disabled {
+    background-color: #ddd;
+    cursor: not-allowed;
+  }
+  
+  .pagination span {
+    margin: 0 10px;
+  }
+  
